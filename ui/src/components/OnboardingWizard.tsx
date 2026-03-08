@@ -58,11 +58,11 @@ type AdapterType =
   | "http"
   | "openclaw_gateway";
 
-const DEFAULT_TASK_DESCRIPTION = `Setup yourself as the CEO. Use the ceo persona found here: [https://github.com/paperclipai/companies/blob/main/default/ceo/AGENTS.md](https://github.com/paperclipai/companies/blob/main/default/ceo/AGENTS.md)
+const DEFAULT_TASK_DESCRIPTION = `Setup yourself as the Principal Investigator. Use the ceo persona found here: [https://github.com/paperclipai/companies/blob/main/default/ceo/AGENTS.md](https://github.com/paperclipai/companies/blob/main/default/ceo/AGENTS.md)
 
 Ensure you have a folder agents/ceo and then download this AGENTS.md as well as the sibling HEARTBEAT.md, SOUL.md, and TOOLS.md. and set that AGENTS.md as the path to your agents instruction file
 
-And after you've finished that, hire yourself a Founding Engineer agent`;
+And after you've finished that, recruit yourself a Lab Manager agent`;},{
 
 export function OnboardingWizard() {
   const { onboardingOpen, onboardingOptions, closeOnboarding } = useDialog();
@@ -84,7 +84,7 @@ export function OnboardingWizard() {
   const [companyGoal, setCompanyGoal] = useState("");
 
   // Step 2
-  const [agentName, setAgentName] = useState("CEO");
+  const [agentName, setAgentName] = useState("Principal Investigator");
   const [adapterType, setAdapterType] = useState<AdapterType>("claude_local");
   const [cwd, setCwd] = useState("");
   const [model, setModel] = useState("");
@@ -100,7 +100,7 @@ export function OnboardingWizard() {
   const [unsetAnthropicLoading, setUnsetAnthropicLoading] = useState(false);
 
   // Step 3
-  const [taskTitle, setTaskTitle] = useState("Create your CEO HEARTBEAT.md");
+  const [taskTitle, setTaskTitle] = useState("Create your Principal Investigator HEARTBEAT.md");
   const [taskDescription, setTaskDescription] = useState(
     DEFAULT_TASK_DESCRIPTION
   );
@@ -114,7 +114,7 @@ export function OnboardingWizard() {
     el.style.height = el.scrollHeight + "px";
   }, []);
 
-  // Created entity IDs — pre-populate from existing company when skipping step 1
+  // Created entity IDs — pre-populate from existing lab when skipping step 1
   const [createdCompanyId, setCreatedCompanyId] = useState<string | null>(
     existingCompanyId ?? null
   );
@@ -124,9 +124,9 @@ export function OnboardingWizard() {
   const [createdAgentId, setCreatedAgentId] = useState<string | null>(null);
   const [createdIssueRef, setCreatedIssueRef] = useState<string | null>(null);
 
-  // Sync step and company when onboarding opens with options.
-  // Keep this independent from company-list refreshes so Step 1 completion
-  // doesn't get reset after creating a company.
+  // Sync step and lab when onboarding opens with options.
+  // Keep this independent from lab-list refreshes so Step 1 completion
+  // doesn't get reset after creating a lab.
   useEffect(() => {
     if (!onboardingOpen) return;
     const cId = onboardingOptions.companyId ?? null;
@@ -234,7 +234,7 @@ export function OnboardingWizard() {
     setError(null);
     setCompanyName("");
     setCompanyGoal("");
-    setAgentName("CEO");
+    setAgentName("Principal Investigator");
     setAdapterType("claude_local");
     setCwd("");
     setModel("");
@@ -246,7 +246,7 @@ export function OnboardingWizard() {
     setAdapterEnvLoading(false);
     setForceUnsetAnthropicApiKey(false);
     setUnsetAnthropicLoading(false);
-    setTaskTitle("Create your CEO HEARTBEAT.md");
+    setTaskTitle("Create your Principal Investigator HEARTBEAT.md");
     setTaskDescription(DEFAULT_TASK_DESCRIPTION);
     setCreatedCompanyId(null);
     setCreatedCompanyPrefix(null);
@@ -298,7 +298,7 @@ export function OnboardingWizard() {
   ): Promise<AdapterEnvironmentTestResult | null> {
     if (!createdCompanyId) {
       setAdapterEnvError(
-        "Create or select a company before testing adapter environment."
+        "Create or select a lab before testing adapter environment."
       );
       return null;
     }
@@ -347,7 +347,7 @@ export function OnboardingWizard() {
 
       setStep(2);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to create company");
+      setError(err instanceof Error ? err.message : "Failed to create lab");
     } finally {
       setLoading(false);
     }
@@ -580,9 +580,9 @@ export function OnboardingWizard() {
                       <Building2 className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Name your company</h3>
+                      <h3 className="font-medium">Name your lab</h3>
                       <p className="text-xs text-muted-foreground">
-                        This is the organization your agents will work for.
+                        This is the research group your agents will support.
                       </p>
                     </div>
                   </div>
@@ -592,7 +592,7 @@ export function OnboardingWizard() {
                     </label>
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                      placeholder="Acme Corp"
+                      placeholder="Emmerson Lab"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                       autoFocus
@@ -604,7 +604,7 @@ export function OnboardingWizard() {
                     </label>
                     <textarea
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50 resize-none min-h-[60px]"
-                      placeholder="What is this company trying to achieve?"
+                      placeholder="What is this lab's primary research mission?"
                       value={companyGoal}
                       onChange={(e) => setCompanyGoal(e.target.value)}
                     />
@@ -619,9 +619,9 @@ export function OnboardingWizard() {
                       <Bot className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Create your first agent</h3>
+                      <h3 className="font-medium">Add your Principal Investigator</h3>
                       <p className="text-xs text-muted-foreground">
-                        Choose how this agent will run tasks.
+                        Choose how this agent will support research tasks.
                       </p>
                     </div>
                   </div>
@@ -631,7 +631,7 @@ export function OnboardingWizard() {
                     </label>
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"
-                      placeholder="CEO"
+                      placeholder="Principal Investigator"
                       value={agentName}
                       onChange={(e) => setAgentName(e.target.value)}
                       autoFocus
@@ -887,7 +887,7 @@ export function OnboardingWizard() {
                         <div className="rounded-md border border-amber-300/60 bg-amber-50/40 px-2.5 py-2 space-y-2">
                           <p className="text-[11px] text-amber-900/90 leading-relaxed">
                             Claude failed while <span className="font-mono">ANTHROPIC_API_KEY</span> is set.
-                            You can clear it in this CEO adapter config and retry the probe.
+                            You can clear it in this Principal Investigator adapter config and retry the probe.
                           </p>
                           <Button
                             size="sm"
@@ -1048,7 +1048,7 @@ export function OnboardingWizard() {
                         <p className="text-sm font-medium truncate">
                           {companyName}
                         </p>
-                        <p className="text-xs text-muted-foreground">Company</p>
+                        <p className="text-xs text-muted-foreground">Lab</p>
                       </div>
                       <Check className="h-4 w-4 text-green-500 shrink-0" />
                     </div>
