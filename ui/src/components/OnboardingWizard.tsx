@@ -62,7 +62,7 @@ const DEFAULT_TASK_DESCRIPTION = `Setup yourself as the Principal Investigator. 
 
 Ensure you have a folder agents/ceo and then download this AGENTS.md as well as the sibling HEARTBEAT.md, SOUL.md, and TOOLS.md. and set that AGENTS.md as the path to your agents instruction file
 
-And after you've finished that, recruit yourself a Lab Manager agent`;},{
+And after you have finished that, recruit yourself a Lab Manager agent`;},{
 
 export function OnboardingWizard() {
   const { onboardingOpen, onboardingOptions, closeOnboarding } = useDialog();
