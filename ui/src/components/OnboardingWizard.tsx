@@ -333,7 +333,7 @@ export function OnboardingWizard() {
       if (companyGoal.trim()) {
         await goalsApi.create(company.id, {
           title: companyGoal.trim(),
-          level: "company",
+          level: "lab",
           status: "active"
         });
         queryClient.invalidateQueries({
@@ -584,7 +584,7 @@ export function OnboardingWizard() {
                   </div>
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">
-                      Company name
+                      Lab name
                     </label>
                     <input
                       className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-ring placeholder:text-muted-foreground/50"

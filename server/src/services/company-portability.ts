@@ -593,7 +593,7 @@ export function companyPortabilityService(db: Db) {
       }));
       files[companyPath] = buildMarkdown(
         {
-          kind: "company",
+          kind: "lab",
           name: company.name,
           description: company.description ?? null,
           brandColor: company.brandColor ?? null,

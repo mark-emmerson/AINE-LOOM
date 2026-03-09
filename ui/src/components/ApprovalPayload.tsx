@@ -1,8 +1,8 @@
 import { UserPlus, Lightbulb, ShieldCheck } from "lucide-react";
 
 export const typeLabel: Record<string, string> = {
-  hire_agent: "Hire Agent",
-  approve_ceo_strategy: "CEO Strategy",
+  hire_agent: "Recruit Agent",
+  approve_ceo_strategy: "Principal Investigator Strategy",
 };
 
 export const typeIcon: Record<string, typeof UserPlus> = {

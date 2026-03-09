@@ -58,7 +58,7 @@ function parseInclude(input: string | undefined): CompanyPortabilityInclude {
   if (!input || !input.trim()) return { company: true, agents: true };
   const values = input.split(",").map((part) => part.trim().toLowerCase()).filter(Boolean);
   const include = {
-    company: values.includes("company"),
+    company: values.includes("lab"),
     agents: values.includes("agents"),
   };
   if (!include.company && !include.agents) {
@@ -201,7 +201,7 @@ function assertDeleteFlags(opts: CompanyDeleteOptions): void {
 }
 
 export function registerCompanyCommands(program: Command): void {
-  const company = program.command("company").description("Company operations");
+  const company = program.command("lab").description("Company operations");
 
   addCommonClientOptions(
     company

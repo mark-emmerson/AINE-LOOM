@@ -121,7 +121,7 @@ Response:
 
 ```json
 {
-  "company": {
+  "lab": {
     "id": "...",
     "name": "Acme Corp"
   },

@@ -161,7 +161,7 @@ export function ApprovalDetail() {
         }
       : linkedAgentId
         ? {
-            label: "Open hired agent",
+            label: "Open recruited agent",
             to: `/agents/${linkedAgentId}`,
           }
         : {

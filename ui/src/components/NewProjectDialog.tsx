@@ -76,7 +76,7 @@ export function NewProjectDialog() {
 
   const uploadDescriptionImage = useMutation({
     mutationFn: async (file: File) => {
-      if (!selectedCompanyId) throw new Error("No company selected");
+      if (!selectedCompanyId) throw new Error("No lab selected");
       return assetsApi.uploadImage(selectedCompanyId, file, "projects/drafts");
     },
   });
@@ -142,7 +142,7 @@ export function NewProjectDialog() {
       return;
     }
     if (repoRequired && !isGitHubRepoUrl(repoUrl)) {
-      setWorkspaceError("Repo workspace must use a valid GitHub repo URL.");
+      setWorkspaceError("Repo lab environment must use a valid GitHub repo URL.");
       return;
     }
 
@@ -284,7 +284,7 @@ export function NewProjectDialog() {
         <div className="px-4 pb-3 space-y-3 border-t border-border">
           <div className="pt-3">
             <p className="text-sm font-medium">Where will work be done on this project?</p>
-            <p className="text-xs text-muted-foreground">Add local folder and/or GitHub repo workspace hints.</p>
+            <p className="text-xs text-muted-foreground">Add local folder and/or GitHub repo lab environment hints.</p>
           </div>
           <div className="grid gap-2 sm:grid-cols-3">
             <button
@@ -339,7 +339,7 @@ export function NewProjectDialog() {
                   className="w-full rounded border border-border bg-transparent px-2 py-1 text-xs font-mono outline-none"
                   value={workspaceLocalPath}
                   onChange={(e) => setWorkspaceLocalPath(e.target.value)}
-                  placeholder="/absolute/path/to/workspace"
+                  placeholder="/absolute/path/to/lab-environment"
                 />
                 <ChoosePathButton />
               </div>

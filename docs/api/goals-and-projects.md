@@ -28,7 +28,7 @@ POST /api/companies/{companyId}/goals
 {
   "title": "Launch MVP by Q1",
   "description": "Ship minimum viable product",
-  "level": "company",
+  "level": "lab",
   "status": "active"
 }
 ```

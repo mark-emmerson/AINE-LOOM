@@ -53,7 +53,7 @@ const [goal] = await db
     companyId: company!.id,
     title: "Ship V1",
     description: "Deliver first control plane release",
-    level: "company",
+    level: "lab",
     status: "active",
     ownerAgentId: ceo!.id,
   })

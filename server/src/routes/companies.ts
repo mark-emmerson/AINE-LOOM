@@ -92,7 +92,7 @@ export function companyRoutes(db: Db) {
       actorType: actor.actorType,
       actorId: actor.actorId,
       action: "company.imported",
-      entityType: "company",
+      entityType: "lab",
       entityId: result.company.id,
       agentId: actor.agentId,
       runId: actor.runId,
@@ -118,7 +118,7 @@ export function companyRoutes(db: Db) {
       actorType: "user",
       actorId: req.actor.userId ?? "board",
       action: "company.created",
-      entityType: "company",
+      entityType: "lab",
       entityId: company.id,
       details: { name: company.name },
     });
@@ -139,7 +139,7 @@ export function companyRoutes(db: Db) {
       actorType: "user",
       actorId: req.actor.userId ?? "board",
       action: "company.updated",
-      entityType: "company",
+      entityType: "lab",
       entityId: companyId,
       details: req.body,
     });
@@ -160,7 +160,7 @@ export function companyRoutes(db: Db) {
       actorType: "user",
       actorId: req.actor.userId ?? "board",
       action: "company.archived",
-      entityType: "company",
+      entityType: "lab",
       entityId: companyId,
     });
     res.json(company);

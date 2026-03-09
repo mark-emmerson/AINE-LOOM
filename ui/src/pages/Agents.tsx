@@ -117,7 +117,7 @@ export function Agents() {
   }, [setBreadcrumbs]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Bot} message="Select a company to view agents." />;
+    return <EmptyState icon={Bot} message="Select a lab to view agents." />;
   }
 
   if (isLoading) {
@@ -297,7 +297,7 @@ export function Agents() {
 
       {effectiveView === "org" && orgTree && orgTree.length === 0 && (
         <p className="text-sm text-muted-foreground text-center py-8">
-          No organizational hierarchy defined.
+          No lab hierarchy defined.
         </p>
       )}
     </div>

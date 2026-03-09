@@ -413,7 +413,7 @@ function invalidateActivityQueries(
     return;
   }
 
-  if (entityType === "company") {
+  if (entityType === "lab") {
     queryClient.invalidateQueries({ queryKey: queryKeys.companies.all });
   }
 }

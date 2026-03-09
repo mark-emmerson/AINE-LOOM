@@ -943,7 +943,7 @@ export function DesignGuide() {
 
         <SubSection title="Initials derivation">
           <div className="flex flex-col gap-2">
-            <Identity name="CEO Agent" size="sm" />
+            <Identity name="Principal Investigator Agent" size="sm" />
             <Identity name="Alpha" size="sm" />
             <Identity name="Quality Assurance Lead" size="sm" />
           </div>
@@ -1313,7 +1313,7 @@ export function DesignGuide() {
             ["C", "New Issue (outside inputs)"],
             ["[", "Toggle Sidebar"],
             ["]", "Toggle Properties Panel"],
-            ["Cmd+1..9 / Ctrl+1..9", "Switch Company (by rail order)"],
+            ["Cmd+1..9 / Ctrl+1..9", "Switch Lab (by rail order)"],
             ["Cmd+Enter / Ctrl+Enter", "Submit markdown comment"],
           ].map(([key, desc]) => (
             <div key={key} className="flex items-center justify-between px-4 py-2">

@@ -84,7 +84,7 @@ export function costRoutes(db: Db) {
       actorType: "user",
       actorId: req.actor.userId ?? "board",
       action: "company.budget_updated",
-      entityType: "company",
+      entityType: "lab",
       entityId: companyId,
       details: { budgetMonthlyCents: req.body.budgetMonthlyCents },
     });

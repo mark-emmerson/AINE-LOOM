@@ -207,7 +207,7 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
   const submitRepoWorkspace = () => {
     const repoUrl = workspaceRepoUrl.trim();
     if (!isGitHubRepoUrl(repoUrl)) {
-      setWorkspaceError("Repo workspace must use a valid GitHub repo URL.");
+      setWorkspaceError("Repo lab environment must use a valid GitHub repo URL.");
       return;
     }
     setWorkspaceError(null);
@@ -221,8 +221,8 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
   const clearLocalWorkspace = (workspace: Project["workspaces"][number]) => {
     const confirmed = window.confirm(
       workspace.repoUrl
-        ? "Clear local folder from this workspace?"
-        : "Delete this workspace local folder?",
+        ? "Clear local folder from this lab environment?"
+        : "Delete this lab environment local folder?",
     );
     if (!confirmed) return;
     if (workspace.repoUrl) {
@@ -239,8 +239,8 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
     const hasLocalFolder = Boolean(workspace.cwd && workspace.cwd !== REPO_ONLY_CWD_SENTINEL);
     const confirmed = window.confirm(
       hasLocalFolder
-        ? "Clear GitHub repo from this workspace?"
-        : "Delete this workspace repo?",
+        ? "Clear GitHub repo from this lab environment?"
+        : "Delete this lab environment repo?",
     );
     if (!confirmed) return;
     if (hasLocalFolder) {
@@ -348,25 +348,25 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
       <div className="space-y-1">
         <div className="py-1.5 space-y-2">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <span>Workspaces</span>
+            <span>Lab Environments</span>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
                   type="button"
                   className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-border text-[10px] text-muted-foreground hover:text-foreground"
-                  aria-label="Workspaces help"
+                  aria-label="Lab Environments help"
                 >
                   ?
                 </button>
               </TooltipTrigger>
               <TooltipContent side="top">
-                Workspaces give your agents hints about where the work is
+                Lab Environments give your agents hints about where the work is
               </TooltipContent>
             </Tooltip>
           </div>
           {workspaces.length === 0 ? (
             <p className="rounded-md border border-dashed border-border px-3 py-2 text-sm text-muted-foreground">
-              No workspace configured.
+              No lab environment configured.
             </p>
           ) : (
             <div className="space-y-1">
@@ -401,7 +401,7 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
                         variant="ghost"
                         size="icon-xs"
                         onClick={() => clearRepoWorkspace(workspace)}
-                        aria-label="Delete workspace repo"
+                        aria-label="Delete lab environment repo"
                       >
                         <Trash2 className="h-3 w-3" />
                       </Button>
@@ -421,7 +421,7 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
                 setWorkspaceError(null);
               }}
             >
-              Add workspace local folder
+              Add lab environment local folder
             </Button>
             <Button
               variant="outline"
@@ -432,7 +432,7 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
                 setWorkspaceError(null);
               }}
             >
-              Add workspace repo
+              Add lab environment repo
             </Button>
           </div>
           {workspaceMode === "local" && (
@@ -442,7 +442,7 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
                   className="w-full rounded border border-border bg-transparent px-2 py-1 text-xs font-mono outline-none"
                   value={workspaceCwd}
                   onChange={(e) => setWorkspaceCwd(e.target.value)}
-                  placeholder="/absolute/path/to/workspace"
+                  placeholder="/absolute/path/to/lab-environment"
                 />
                 <ChoosePathButton />
               </div>
@@ -508,13 +508,13 @@ export function ProjectProperties({ project, onUpdate }: ProjectPropertiesProps)
             <p className="text-xs text-destructive">{workspaceError}</p>
           )}
           {createWorkspace.isError && (
-            <p className="text-xs text-destructive">Failed to save workspace.</p>
+            <p className="text-xs text-destructive">Failed to save lab environment.</p>
           )}
           {removeWorkspace.isError && (
-            <p className="text-xs text-destructive">Failed to delete workspace.</p>
+            <p className="text-xs text-destructive">Failed to delete lab environment.</p>
           )}
           {updateWorkspace.isError && (
-            <p className="text-xs text-destructive">Failed to update workspace.</p>
+            <p className="text-xs text-destructive">Failed to update lab environment.</p>
           )}
         </div>
 

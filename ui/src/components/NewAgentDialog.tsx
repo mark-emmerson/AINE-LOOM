@@ -148,7 +148,7 @@ export function NewAgentDialog() {
                   <Sparkles className="h-6 w-6 text-foreground" />
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  We recommend letting your CEO handle agent setup — they know the
+                  We recommend letting your Principal Investigator handle agent setup - they know the
                   org structure and can configure reporting, permissions, and
                   adapters.
                 </p>
@@ -156,7 +156,7 @@ export function NewAgentDialog() {
 
               <Button className="w-full" size="lg" onClick={handleAskCeo}>
                 <Bot className="h-4 w-4 mr-2" />
-                Ask the CEO to create a new agent
+                Ask the Principal Investigator to create a new agent
               </Button>
 
               {/* Advanced link */}

@@ -97,7 +97,7 @@ Includes the issue's `project` and `goal` (with descriptions), plus each ancesto
         "id": "goal-1",
         "title": "Launch MVP",
         "description": "Ship minimum viable product by Q1",
-        "level": "company",
+        "level": "lab",
         "status": "active"
       }
     },

@@ -481,7 +481,7 @@ A company template is a JSON file describing a full company structure:
     {
       "ref": "north-star",
       "title": "Launch MVP",
-      "level": "company"
+      "level": "lab"
     },
     {
       "ref": "build-product",
